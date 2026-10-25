@@ -1,0 +1,50 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Filofax · мои подборки</title>
+<style>
+:root { --paper:#FBFAF7; --ink:#1b2422; --muted:#5b6865; --line:#cdd6d3; --card:#fff; --signal:#C2693F; color-scheme:light; }
+body { margin:0; min-height:100vh; display:grid; place-items:center; background:var(--paper); color:var(--ink); font:16px/1.5 system-ui, sans-serif; padding:16px; box-sizing:border-box; }
+form { background:var(--card); border:2px solid var(--ink); padding:1.75rem 1.5rem; width:min(100%, 22rem); display:grid; gap:.8rem; }
+h1 { margin:0; font-size:1.8rem; line-height:1.1; } h1 span { color:var(--signal); }
+p { margin:0; color:var(--muted); }
+input[type=password] { font:inherit; border:1px solid var(--line); padding:.6rem .8rem; background:var(--paper); color:var(--ink); }
+button { font:600 1rem system-ui, sans-serif; border:0; padding:.7rem 1rem; background:var(--signal); color:#fff; cursor:pointer; }
+label.rem { font-size:.9rem; color:var(--muted); display:flex; gap:.4rem; align-items:center; }
+.err { color:var(--signal); min-height:1.2em; font-size:.9rem; }
+</style></head><body>
+<form id="f"><h1>Filofax · <span>мои подборки</span></h1><p>Личная страница. Введите пароль.</p>
+<label for="pw" style="position:absolute;left:-9999px">Пароль</label>
+<input id="pw" type="password" autocomplete="current-password" placeholder="Пароль" required>
+<label class="rem"><input id="rem" type="checkbox" checked> Запомнить на этом устройстве</label>
+<button type="submit">Открыть</button><div class="err" id="err" role="alert"></div></form>
+<script>
+var SALT = "6794ed15a3f0c22a", ITER = 310000, DATA = "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";
+function hex(h) { var a = new Uint8Array(h.length / 2); for (var i = 0; i < a.length; i++) a[i] = parseInt(h.substr(i * 2, 2), 16); return a; }
+function b64(s) { var b = atob(s), a = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) a[i] = b.charCodeAt(i); return a; }
+async function bitsFrom(pw) {
+  var k = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveBits"]);
+  return new Uint8Array(await crypto.subtle.deriveBits({ name: "PBKDF2", salt: hex(SALT), iterations: ITER, hash: "SHA-256" }, k, 384));
+}
+async function dec(bits) {
+  var ct = b64(DATA);
+  if (String.fromCharCode.apply(null, ct.slice(0, 8)) === "Salted__") ct = ct.slice(16);
+  var key = await crypto.subtle.importKey("raw", bits.slice(0, 32), "AES-CBC", false, ["decrypt"]);
+  return new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-CBC", iv: bits.slice(32, 48) }, key, ct));
+}
+function show(page) { document.open(); document.write(page); document.close(); }
+var saved = null; try { saved = localStorage.getItem("fx-key-" + SALT); } catch (e) {}
+if (saved) dec(b64(saved)).then(show).catch(function () { try { localStorage.removeItem("fx-key-" + SALT); } catch (e) {} });
+document.getElementById("f").addEventListener("submit", async function (ev) {
+  ev.preventDefault();
+  var err = document.getElementById("err"); err.textContent = "Проверяю…";
+  try {
+    var bits = await bitsFrom(document.getElementById("pw").value);
+    var page = await dec(bits);
+    if (document.getElementById("rem").checked) {
+      try { localStorage.setItem("fx-key-" + SALT, btoa(String.fromCharCode.apply(null, bits))); } catch (e) {}
+    }
+    show(page);
+  } catch (e) { err.textContent = "Неверный пароль. Попробуйте ещё раз."; }
+});
+</script></body></html>
